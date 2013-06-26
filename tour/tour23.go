@@ -5,25 +5,21 @@ import (
 	"math"
 )
 
-func Sqrt(x float64) float64 {
-	y := 1.0
-	z := 1.0
-	n := 0
-	diff := 0.0000001
+func Sqrt(x, delta float64) float64 {
+	fmt.Println("My implementation")
+	oldZ := 1.0
+	newZ := 1.0
 	for {
-		y = z - ((z*z - x) / (2 * z))
-		if y-z > -diff && y-z < diff {
-			fmt.Println("Iterations:", n)
-			return y
+		newZ = oldZ - ((oldZ*oldZ - x) / (2 * oldZ))
+		if newZ-oldZ > -delta && newZ-oldZ < delta {
+			return newZ
 		} else {
-			z = y
+			oldZ = newZ
 		}
-		n++
 	}
 }
 
 func main() {
-	n := float64(100)
-	fmt.Println(Sqrt(n))
-	fmt.Println(math.Abs(Sqrt(n) - math.Sqrt(n)))
+	fmt.Println(Sqrt(100, 0.001))
+	fmt.Println(math.Sqrt(100))
 }
