@@ -12,8 +12,8 @@ type changer interface {
 
 // This method will recieve a pointer to changee regarless of if the method is
 // called on a '*changee' or a 'changee'. However, only '*changee' implements
-// the changer interface. This is just a regular function, it is not tied to 
-// the interface.
+// the changer interface. A method is justa regular function with the addition
+// of a reciever before the function name, it is not tied to the interface.
 func (ptrToChangee *changee) change() {
 	ptrToChangee.val += " has been changed"
 }
